@@ -3,7 +3,10 @@
 //dependencies
 var path = require('path');
 var _ = require('lodash');
+var async = require('async');
 var workbook = require(path.join(__dirname, 'lib', 'workbook'));
+var sheet = require(path.join(__dirname, 'lib', 'sheet'));
+var question = require(path.join(__dirname, 'lib', 'question'));
 
 function xlsform2json(source, done) {
     //normalize arguments
@@ -18,7 +21,23 @@ function xlsform2json(source, done) {
     }
 
     //try read excel source from multiple source
-    workbook.read(source, done);
+    async.waterfall([
+        function readWorkbook(next) {
+            workbook.read(source, next);
+        },
+        function obtainXLSFormSheets(workbook, next) {
+            sheet.sheets(workbook, function(error, _sheets) {
+                var xlsform = _.merge({}, {
+                    workbook: workbook
+                }, _sheets);
+
+                next(error, xlsform);
+            });
+        },
+        function obtainQuestions(xlsform, next) {
+            question.questions(xlsform, next);
+        }
+    ], done);
 }
 
 //export xlsform template

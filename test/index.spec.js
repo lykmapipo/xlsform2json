@@ -18,7 +18,7 @@ describe('xlsform2json', function() {
     });
 
     describe('datasource', function() {
-        
+
         it('should throw `Unknown datasource` if excel source not provided', function(done) {
             xlsform2json(function(error) {
                 expect(error.message).to.equal('Unknown datasource');
@@ -63,6 +63,7 @@ describe('xlsform2json', function() {
                     return x.charCodeAt(0);
                 }),
                 function(error, result) {
+                    // console.log(result.settings);
                     expect(error).to.not.exist;
                     expect(result).to.exist;
                     done();
