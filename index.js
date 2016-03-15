@@ -6,7 +6,7 @@ var _ = require('lodash');
 var async = require('async');
 var workbook = require(path.join(__dirname, 'lib', 'workbook'));
 var sheet = require(path.join(__dirname, 'lib', 'sheet'));
-var question = require(path.join(__dirname, 'lib', 'question'));
+var questionnaire = require(path.join(__dirname, 'lib', 'questionnaire'));
 
 function xlsform2json(source, done) {
     //normalize arguments
@@ -35,7 +35,7 @@ function xlsform2json(source, done) {
             });
         },
         function obtainQuestions(xlsform, next) {
-            question.questions(xlsform, next);
+            questionnaire(xlsform, next);
         }
     ], done);
 }

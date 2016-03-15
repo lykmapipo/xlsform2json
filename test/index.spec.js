@@ -7,7 +7,7 @@ var expect = require('chai').expect;
 // var sample = path.join(__dirname, 'fixture', 'sample.xls');
 var filled = path.join(__dirname, 'fixture', 'filled.xls');
 var noSettings = path.join(__dirname, 'fixture', 'no_settings.xlsx');
-var questionTypes = path.join(__dirname, 'fixture', 'question_types.xlsx');
+// var questionTypes = path.join(__dirname, 'fixture', 'question_types.xlsx');
 
 var xlsform2json = require(path.join(__dirname, '..'));
 
@@ -88,10 +88,11 @@ describe('xlsform2json', function() {
 
     });
 
-    describe('questions', function() {
+    describe('questionnaire', function() {
 
         it('should be able to parse questions', function(done) {
-            xlsform2json(questionTypes, function(error, result) {
+            xlsform2json(filled, function(error, result) {
+                // console.log(result);
                 expect(error).to.not.exist;
                 expect(result).to.exist;
                 done();
