@@ -6,6 +6,8 @@ var path = require('path');
 var expect = require('chai').expect;
 // var sample = path.join(__dirname, 'fixture', 'sample.xls');
 var filled = path.join(__dirname, 'fixture', 'filled.xls');
+var noSettings = path.join(__dirname, 'fixture', 'no_settings.xlsx');
+var questionTypes = path.join(__dirname, 'fixture', 'question_types.xlsx');
 
 var xlsform2json = require(path.join(__dirname, '..'));
 
@@ -29,6 +31,13 @@ describe('xlsform2json', function() {
         it('should throw `Invalid datasource` on unsupported excel source', function(done) {
             xlsform2json('abcd', function(error) {
                 expect(error.message).to.equal('Invalid datasource');
+                done();
+            });
+        });
+
+        it('should throw `Missing <name> sheet` on unsupported excel source', function(done) {
+            xlsform2json(noSettings, function(error) {
+                expect(error.message).to.equal('Missing settings sheet');
                 done();
             });
         });
@@ -63,7 +72,6 @@ describe('xlsform2json', function() {
                     return x.charCodeAt(0);
                 }),
                 function(error, result) {
-                    // console.log(result.settings);
                     expect(error).to.not.exist;
                     expect(result).to.exist;
                     done();
@@ -72,6 +80,18 @@ describe('xlsform2json', function() {
 
         it('should be able to read a workbook from a file', function(done) {
             xlsform2json(filled, function(error, result) {
+                expect(error).to.not.exist;
+                expect(result).to.exist;
+                done();
+            });
+        });
+
+    });
+
+    describe('questions', function() {
+
+        it('should be able to parse questions', function(done) {
+            xlsform2json(questionTypes, function(error, result) {
                 expect(error).to.not.exist;
                 expect(result).to.exist;
                 done();
