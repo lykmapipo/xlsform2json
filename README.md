@@ -3,7 +3,7 @@ xlsform2json
 
 [![Build Status](https://travis-ci.org/lykmapipo/xlsform2json.svg?branch=master)](https://travis-ci.org/lykmapipo/xlsform2json)
 
-[nodejs](https://github.com/nodejs) utilities to convert [XLSForm](http://xlsform.org/) to json.
+[nodejs](https://github.com/nodejs) utilities to convert [XLSForm](http://xlsform.org/) to JSON.
 
 ## Installation
 ```sh
