@@ -5,7 +5,7 @@ var fs = require('fs');
 var path = require('path');
 var expect = require('chai').expect;
 // var sample = path.join(__dirname, 'fixture', 'sample.xls');
-var filled = path.join(__dirname, 'fixture', 'filled.xls');
+var simple = path.join(__dirname, 'fixture', 'simple_questionnaire.xls');
 var noSettings = path.join(__dirname, 'fixture', 'no_settings.xlsx');
 // var questionTypes = path.join(__dirname, 'fixture', 'question_types.xlsx');
 
@@ -43,7 +43,7 @@ describe('xlsform2json', function() {
         });
 
         it('should be able to read a workbook from binary string', function(done) {
-            xlsform2json(fs.readFileSync(filled, 'binary'), function(error, result) {
+            xlsform2json(fs.readFileSync(simple, 'binary'), function(error, result) {
                 expect(error).to.not.exist;
                 expect(result).to.exist;
                 done();
@@ -51,7 +51,7 @@ describe('xlsform2json', function() {
         });
 
         it('should be able to read a workbook from base64 string', function(done) {
-            xlsform2json(fs.readFileSync(filled, 'base64'), function(error, result) {
+            xlsform2json(fs.readFileSync(simple, 'base64'), function(error, result) {
                 expect(error).to.not.exist;
                 expect(result).to.exist;
                 done();
@@ -59,7 +59,7 @@ describe('xlsform2json', function() {
         });
 
         it('should be able to read a workbook from buffer', function(done) {
-            xlsform2json(fs.readFileSync(filled), function(error, result) {
+            xlsform2json(fs.readFileSync(simple), function(error, result) {
                 expect(error).to.not.exist;
                 expect(result).to.exist;
                 done();
@@ -68,7 +68,7 @@ describe('xlsform2json', function() {
 
         it('should be able to read a workbook from array', function(done) {
             xlsform2json(
-                fs.readFileSync(filled, 'binary').split('').map(function(x) {
+                fs.readFileSync(simple, 'binary').split('').map(function(x) {
                     return x.charCodeAt(0);
                 }),
                 function(error, result) {
@@ -79,7 +79,7 @@ describe('xlsform2json', function() {
         });
 
         it('should be able to read a workbook from a file', function(done) {
-            xlsform2json(filled, function(error, result) {
+            xlsform2json(simple, function(error, result) {
                 expect(error).to.not.exist;
                 expect(result).to.exist;
                 done();
@@ -89,12 +89,20 @@ describe('xlsform2json', function() {
     });
 
     describe('questionnaire', function() {
+        it('should throw error when invalid question type used');
 
-        it('should be able to parse questions', function(done) {
-            xlsform2json(filled, function(error, result) {
-                // console.log(result);
+        it('should be able to questionnaire settings details', function(done) {
+            xlsform2json(simple, function(error, result) {
                 expect(error).to.not.exist;
                 expect(result).to.exist;
+
+                //assert settings
+                expect(result.name).to.equal('Party');
+                expect(result.title).to.equal('Party');
+                expect(result.id).to.equal('1B22324A340354');
+                expect(result.language).to.equal('English');
+                expect(result.version).to.equal('1.0.0');
+
                 done();
             });
         });
