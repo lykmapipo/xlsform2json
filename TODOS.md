@@ -57,3 +57,13 @@ error:{
 - [ ] restore questionnaire filling based on client id
 - [ ] populate questionnaire meta data based on browser
 - [ ] find XPath expression evaluator which use context
+
+## Structure
+- [ ] settings
+    + [ ] title
+    + [ ] id
+    + [ ] language
+    + [ ] version
+    + [ ] respondent
+    + [ ] submissionUrl
+    + [ ] publicKey

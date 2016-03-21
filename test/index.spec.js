@@ -6,6 +6,7 @@ var path = require('path');
 var expect = require('chai').expect;
 // var sample = path.join(__dirname, 'fixture', 'sample.xls');
 var simple = path.join(__dirname, 'fixture', 'simple_questionnaire.xls');
+var encrypted = path.join(__dirname, 'fixture', 'encrypted.xlsx');
 var noSettings = path.join(__dirname, 'fixture', 'no_settings.xlsx');
 // var questionTypes = path.join(__dirname, 'fixture', 'question_types.xlsx');
 
@@ -90,18 +91,26 @@ describe('xlsform2json', function() {
 
     describe('questionnaire', function() {
         it('should throw error when invalid question type used');
+        it('should be able to parse and present questionnaire structure');
 
-        it('should be able to questionnaire settings details', function(done) {
-            xlsform2json(simple, function(error, result) {
+    });
+
+    describe('settings', function() {
+
+        it('should be able to obtain settings details', function(done) {
+            xlsform2json(encrypted, function(error, result) {
+
                 expect(error).to.not.exist;
                 expect(result).to.exist;
+                expect(result.settings).to.exist;
 
                 //assert settings
-                expect(result.name).to.equal('Party');
-                expect(result.title).to.equal('Party');
-                expect(result.id).to.equal('1B22324A340354');
-                expect(result.language).to.equal('English');
-                expect(result.version).to.equal('1.0.0');
+                expect(result.settings.title).to.equal('Party');
+                expect(result.settings.id).to.equal('1B22324A340354');
+                expect(result.settings.language).to.equal('English');
+                expect(result.settings.version).to.equal('1.0.0');
+                expect(result.settings.submissionUrl).to.exist;
+                expect(result.settings.publicKey).to.exist;
 
                 done();
             });
