@@ -39,9 +39,13 @@ error:{
     - [ ] remove question number from a label
     - [ ] use row or number on a label to denote question number 
 - [ ] should be able to parse questions
+    - [ ] Normalize question types to standard ones
+    - [ ] Ensure question variable name is in snake case otherwise raise error
+    - [ ] Parse question appearance 
 - [ ] should be able to parse question option list
     - [ ] parse choices
-    - [ ] group by list_name
+    - [ ] parse choice media if available
+    - [ ] group by list_name(label for list name must be underscored)
     - [ ] detect and remove(or throw error) duplicates on options
     - [ ] merge options list on the question(list_name must be equal to question variable name)
     - [ ] detect or_other options
@@ -91,6 +95,8 @@ error:{
 ## Structure
 Below is the structure of the JSONForm produced from XLSForm
 
+- [ ] choices
+- [ ] meta
 - [x] settings
     + [x] title
     + [x] id
@@ -99,3 +105,5 @@ Below is the structure of the JSONForm produced from XLSForm
     + [x] respondent
     + [x] submissionUrl
     + [x] publicKey
+- [ ] structure
+- [ ] survey(questions) 
