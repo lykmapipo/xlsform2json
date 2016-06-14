@@ -81,7 +81,6 @@ describe('xlsform2json', function() {
 
         it('should be able to read a workbook from a file', function(done) {
             xlsform2json(simple, function(error, result) {
-                console.log(result);
                 expect(error).to.not.exist;
                 expect(result).to.exist;
                 done();
@@ -101,6 +100,8 @@ describe('xlsform2json', function() {
         it('should be able to obtain settings details', function(done) {
             xlsform2json(encrypted, function(error, result) {
 
+                console.log(result);
+
                 expect(error).to.not.exist;
                 expect(result).to.exist;
                 expect(result.settings).to.exist;
@@ -110,6 +111,9 @@ describe('xlsform2json', function() {
                 expect(result.settings.id).to.equal('1B22324A340354');
                 expect(result.settings.language).to.equal('English');
                 expect(result.settings.version).to.equal('1.0.0');
+                // jshint quotmark:double
+                expect(result.settings.respondent).to.equal("concat(${lname}, '-', ${fname}, '-', uuid())");
+                //jshint quotmark:single
                 expect(result.settings.submissionUrl).to.exist;
                 expect(result.settings.publicKey).to.exist;
 

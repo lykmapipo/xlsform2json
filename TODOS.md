@@ -1,5 +1,8 @@
 # TODOS
 
+## Code Comments
+- [ ] update constants with xform and xlsform specification comments
+
 error:{
     code:'',
     name:'',
@@ -35,6 +38,8 @@ error:{
 - [ ] should filter out meta questions
 - [ ] should pick only allowed excel headers as question fields
 - [ ] should parse repeat questions and build logics around them
+    - [ ] should flag a question as a repeat question
+    - [ ] should have a repeat group questions in a collection 
 - [ ] should set apperance on the question
 - [ ] should parse question question group(even deep group)
 - [ ] should throw error including excel(xlsform) row number
@@ -43,6 +48,7 @@ error:{
 - [ ] how do we add form description on XLSForm
 - [ ] add support for encypted forms
 - [ ] parse questionnaire instance from XForm
+- [ ] Convert xpath expressions to JS express or add xpath expression evaluator
 
 
 ## WebForm
@@ -58,12 +64,15 @@ error:{
 - [ ] populate questionnaire meta data based on browser
 - [ ] find XPath expression evaluator which use context
 
+
 ## Structure
-- [ ] settings
-    + [ ] title
-    + [ ] id
-    + [ ] language
-    + [ ] version
-    + [ ] respondent
-    + [ ] submissionUrl
-    + [ ] publicKey
+Below is the structure of the JSONForm produced from XLSForm
+
+- [x] settings
+    + [x] title
+    + [x] id
+    + [x] language
+    + [x] version
+    + [x] respondent
+    + [x] submissionUrl
+    + [x] publicKey
