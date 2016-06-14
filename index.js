@@ -36,8 +36,8 @@ function xlsform2json(source, done) {
                 next(error, xlsform);
             });
         },
-        
-        function parseXLSFormToJSONForm(xlsform, next) {
+
+        function convertXLSFormToJSONForm(xlsform, next) {
             questionnaire(xlsform, next);
         }
 
