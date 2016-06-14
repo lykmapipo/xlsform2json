@@ -58,7 +58,8 @@ error:{
 - [ ] should not allow two variable to have same name
 - [ ] should not allow variable to have spaces
 - [ ] should validate question type
-- [ ] should filter out meta questions
+    - [ ] valid xlsform question type 
+- [x] should filter out meta questions from questions
 - [ ] should pick only allowed excel headers as question fields
 - [ ] should parse repeat questions and build logics around them
     - [ ] should flag a question as a repeat question
@@ -73,6 +74,7 @@ error:{
 - [ ] parse questionnaire instance from XForm
 - [ ] Convert xpath expressions to JS express or add xpath expression evaluator
 - [ ] Detect statistical measure of the question(s)
+- [ ] Set valid mongoose/js schema type
 
 ## Restrictions
 - [ ] choice name must be equal to variable names
@@ -95,8 +97,8 @@ error:{
 ## Structure
 Below is the structure of the JSONForm produced from XLSForm
 
-- [ ] choices
-- [ ] meta
+- [ ] choices(select + multi select choices)
+- [ ] meta(questions)
 - [x] settings
     + [x] title
     + [x] id
@@ -105,5 +107,5 @@ Below is the structure of the JSONForm produced from XLSForm
     + [x] respondent
     + [x] submissionUrl
     + [x] publicKey
-- [ ] structure
+- [ ] structure(meta+normal questions)
 - [ ] survey(questions) 

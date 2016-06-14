@@ -128,6 +128,8 @@ describe('xlsform2json', function() {
         it('should be able to obtain choices details', function(done) {
             xlsform2json(encrypted, function(error, result) {
 
+                console.log(result);
+
                 expect(error).to.not.exist;
                 expect(result).to.exist;
                 expect(result.choices).to.exist;
