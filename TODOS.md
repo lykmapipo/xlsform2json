@@ -9,9 +9,14 @@ error:{
     correction:''
 }
 
-## kusanya Test
-- [ ] Create a xlsform template from given form id
-- [ ] add questions,settings,meta etc
+## kusanya Test / Usage
+- [ ] Create questionnaire by providing all required details
+    - [ ] name / title - `form_title`
+    - [ ] language default to `English` - `default_language`
+    - [ ] publicKey - `public_key`
+    - [ ] generate form_id md5(party:project:questionnaire) - `form_id`
+- [ ] Generate a xlsform template from given questionnaire details 
+- [ ] add questions, settings, meta etc
 - [ ] ensure form_id is incryptes before set
 - [ ] add custom submission url
 - [ ] add encryption key
@@ -49,6 +54,7 @@ error:{
 - [ ] add support for encypted forms
 - [ ] parse questionnaire instance from XForm
 - [ ] Convert xpath expressions to JS express or add xpath expression evaluator
+- [ ] Detect statistical measure of the questions
 
 
 ## WebForm

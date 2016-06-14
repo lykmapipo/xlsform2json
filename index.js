@@ -22,9 +22,11 @@ function xlsform2json(source, done) {
 
     //try read excel source from multiple source
     async.waterfall([
+
         function readWorkbook(next) {
             workbook.read(source, next);
         },
+
         function obtainXLSFormSheets(workbook, next) {
             sheet.sheets(workbook, function(error, _sheets) {
                 var xlsform = _.merge({}, {
@@ -34,9 +36,11 @@ function xlsform2json(source, done) {
                 next(error, xlsform);
             });
         },
-        function obtainQuestions(xlsform, next) {
+        
+        function parseXLSFormToJSONForm(xlsform, next) {
             questionnaire(xlsform, next);
         }
+
     ], done);
 }
 
