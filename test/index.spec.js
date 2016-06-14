@@ -3,6 +3,7 @@
 //dependencies
 var fs = require('fs');
 var path = require('path');
+var _ = require('lodash');
 var expect = require('chai').expect;
 // var sample = path.join(__dirname, 'fixture', 'sample.xls');
 var simple = path.join(__dirname, 'fixture', 'simple_questionnaire.xls');
@@ -89,7 +90,7 @@ describe('xlsform2json', function() {
 
     });
 
-    describe('questionnaire', function() {
+    describe('survey', function() {
         it('should throw error when invalid question type used');
         it('should be able to parse and present questionnaire structure');
 
@@ -99,8 +100,6 @@ describe('xlsform2json', function() {
 
         it('should be able to obtain settings details', function(done) {
             xlsform2json(encrypted, function(error, result) {
-
-                console.log(result);
 
                 expect(error).to.not.exist;
                 expect(result).to.exist;
@@ -116,6 +115,25 @@ describe('xlsform2json', function() {
                 //jshint quotmark:single
                 expect(result.settings.submissionUrl).to.exist;
                 expect(result.settings.publicKey).to.exist;
+
+                done();
+            });
+        });
+
+    });
+
+
+    describe('choices', function() {
+
+        it('should be able to obtain choices details', function(done) {
+            xlsform2json(encrypted, function(error, result) {
+
+                expect(error).to.not.exist;
+                expect(result).to.exist;
+                expect(result.choices).to.exist;
+
+                expect(_.get(result.choices, 'yes_no')).to.exist;
+                expect(_.get(result.choices, 'browsers')).to.exist;
 
                 done();
             });

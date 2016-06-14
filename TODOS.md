@@ -22,6 +22,8 @@ error:{
 - [ ] add encryption key
 - [ ] generate public & private key for each form
 - [ ] later process encrypted submission & test them & study encrypted forms
+- [ ] for select_multi questions store value as array
+- [ ] for select_single store value as string
 
 ## JSONForm
 - [x] should be able to read xls from file and buffer
@@ -34,8 +36,20 @@ error:{
 - [ ] should be able to parse `id_string` and `public_key`
 - [ ] should ensure form version using sermver
 - [ ] should be able to parse question number
+    - [ ] remove question number from a label
+    - [ ] use row or number on a label to denote question number 
 - [ ] should be able to parse questions
 - [ ] should be able to parse question option list
+    - [ ] parse choices
+    - [ ] group by list_name
+    - [ ] detect and remove(or throw error) duplicates on options
+    - [ ] merge options list on the question(list_name must be equal to question variable name)
+    - [ ] detect or_other options
+    - [ ] try pre coding answers
+        - [ ] yes and no
+        - [ ] true or false
+        - [ ] numbered
+        - [ ] rank nominal or categorial 
 - [ ] should be able to validate xlsform(columns, datatypes, sheets etc)
 - [ ] should not allow two variable to have same name
 - [ ] should not allow variable to have spaces
@@ -54,7 +68,10 @@ error:{
 - [ ] add support for encypted forms
 - [ ] parse questionnaire instance from XForm
 - [ ] Convert xpath expressions to JS express or add xpath expression evaluator
-- [ ] Detect statistical measure of the questions
+- [ ] Detect statistical measure of the question(s)
+
+## Restrictions
+- [ ] choice name must be equal to variable names
 
 
 ## WebForm
