@@ -81,6 +81,7 @@ describe('xlsform2json', function() {
 
         it('should be able to read a workbook from a file', function(done) {
             xlsform2json(simple, function(error, result) {
+                console.log(result);
                 expect(error).to.not.exist;
                 expect(result).to.exist;
                 done();
