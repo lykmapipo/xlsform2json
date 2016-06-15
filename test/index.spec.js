@@ -10,6 +10,8 @@ var invalidInput = path.join(__dirname, 'fixture', 'invalid_input.xlsx');
 var noType = path.join(__dirname, 'fixture', 'no_type.xlsx');
 var noName = path.join(__dirname, 'fixture', 'no_name.xlsx');
 var noLabel = path.join(__dirname, 'fixture', 'no_label.xlsx');
+var invalidVariableNaming = path.join(__dirname, 'fixture', 'invalid_variable_naming.xlsx');
+var duplicateVariableName = path.join(__dirname, 'fixture', 'duplicate_variable_name.xlsx');
 var encrypted = path.join(__dirname, 'fixture', 'encrypted.xlsx');
 var noSettings = path.join(__dirname, 'fixture', 'no_settings.xlsx');
 
@@ -156,6 +158,33 @@ describe('xlsform2json', function() {
 
                 expect(error).to.exist;
                 expect(error.message).to.contain('Missing question label');
+
+                done();
+
+            });
+
+        });
+
+        it('should throw error when question variable name is not in lowercase and words separated by underscore', function(done) {
+
+            xlsform2json(invalidVariableNaming, function(error) {
+
+                expect(error).to.exist;
+                expect(error.message).to.contain('Invalid variable name');
+
+                done();
+
+            });
+
+        });
+
+
+        it('should throw error when there is a duplicate in question variable', function(done) {
+
+            xlsform2json(duplicateVariableName, function(error) {
+
+                expect(error).to.exist;
+                expect(error.message).to.contain('Duplicate variable name');
 
                 done();
 

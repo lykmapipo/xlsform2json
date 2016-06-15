@@ -37,7 +37,6 @@ error:{
     - [ ] should ensure form version using sermver 
 - [x] should be able to parse questions
     - [ ] Normalize question types to standard ones
-    - [ ] Ensure question variable name is in snake case otherwise raise error
     - [ ] Parse question appearance
     - [ ] should be able to parse question number
         - [ ] remove question number from a label
@@ -56,8 +55,9 @@ error:{
         - [ ] rank nominal or categorial 
 - [ ] should be able to validate xlsform(columns, datatypes, sheets etc)
 - [ ] should be able to validate question(s)
-    - [ ] should not allow two variable to have same name
-    - [ ] should not allow variable to have spaces(ensure use of snake case)
+    - [x] should not allow two variable to have same name
+    - [x] Ensure question variable name is in snake case otherwise raise error
+    - [x] should not allow variable to have spaces(ensure use of snake case)
     - [x] should ensure question has a label
     - [x] should ensure question has a type
     - [x] should ensure question has a name(variable name)
@@ -73,12 +73,12 @@ error:{
 - [ ] should throw error including excel(xlsform) row number
 - [ ] make use of submission_url to submit form per party and enable hooks
 - [ ] cleanup user submission_url(from uploaded xlsform) to avoid data loss
-- [ ] how do we add form description on XLSForm
+- [ ] how do we add form description on XLSForm?
 - [ ] add support for encypted forms
 - [ ] parse/prepare questionnaire instance from XForm
 - [ ] Convert xpath expressions to JS express or add xpath expression evaluator
 - [ ] Detect statistical measure of the question(s)
-- [ ] Set valid mongoose/js schema type
+- [ ] Set valid mongoose/js schema type (map xlsform input type to valid mongodb datatypes)
 
 ## Restrictions
 - [ ] choice name must be equal to variable names
