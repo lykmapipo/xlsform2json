@@ -164,7 +164,16 @@ describe('xlsform2json', function() {
         });
 
 
-        it('should be able to parse and present questionnaire structure');
+        it('should be able to parse and present questionnaire structure', function(done) {
+            xlsform2json(encrypted, function(error, result) {
+
+                expect(error).to.not.exist;
+                expect(result).to.exist;
+                expect(result.structure).to.exist;
+
+                done();
+            });
+        });
 
     });
 

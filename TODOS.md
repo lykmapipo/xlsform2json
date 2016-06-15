@@ -111,5 +111,5 @@ Below is the structure of the JSONForm produced from XLSForm
     + [x] respondent
     + [x] submissionUrl
     + [x] publicKey
-- [ ] structure(meta+normal questions)
-- [ ] survey(questions) 
+- [ ] structure(meta+normal questions) - used for rendering
+- [ ] survey(questions) - used in observation and responses
