@@ -26,6 +26,7 @@ error:{
 - [ ] for select_single store value as string
 
 ## JSONForm
+- [ ] should support auto clean of questionnaire sheets
 - [x] should be able to read xls from file, base64 and buffer
 - [x] should be able to number(row) each questionnaire row
 - [x] should be able to parse questionnaire meta
@@ -43,7 +44,7 @@ error:{
         - [ ] use row or number on a label to denote question number 
 - [x] should be able to parse question option list
     - [x] parse choices
-    - [ ] parse choice media if available
+    - [ ] parse choice media label if available
     - [ ] group by list_name(label for list name must be underscored)
     - [ ] detect and remove(or throw error) duplicates on options
     - [x] merge options list on the question(list_name must be equal to question variable name)
@@ -70,8 +71,8 @@ error:{
     - [ ] should flag a question as a repeat question
     - [ ] should have a repeat group questions in a collection 
 - [ ] should set apperance on the question
-- [ ] should parse question question group(even deep group)
-- [ ] should throw error including excel(xlsform) row number
+- [ ] should parse question group(even deep group) - introduce restriction on nesting
+- [x] should throw error including excel(xlsform) row number
 - [ ] make use of submission_url to submit form per party and enable hooks
 - [ ] cleanup user submission_url(from uploaded xlsform) to avoid data loss
 - [ ] how do we add form description on XLSForm?
