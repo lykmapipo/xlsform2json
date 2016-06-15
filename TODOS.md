@@ -54,7 +54,8 @@ error:{
         - [ ] numbered
         - [ ] rank nominal or categorial 
 - [ ] should be able to validate xlsform(columns, datatypes, sheets etc)
-- [ ] should be able to validate question(s)
+- [ ] should be able to handle group and repeat types
+- [x] should be able to validate question(s)
     - [x] should not allow two variable to have same name
     - [x] Ensure question variable name is in snake case otherwise raise error
     - [x] should not allow variable to have spaces(ensure use of snake case)
