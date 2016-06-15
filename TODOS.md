@@ -26,28 +26,28 @@ error:{
 - [ ] for select_single store value as string
 
 ## JSONForm
-- [x] should be able to read xls from file and buffer
-- [ ] should be able to number(row) each questionnaire row
+- [x] should be able to read xls from file, base64 and buffer
+- [x] should be able to number(row) each questionnaire row
 - [x] should be able to parse questionnaire meta
-- [ ] should be able to throw error in case of invalid meta
-- [ ] should be able to parse questionnaire settings
-- [ ] should be able to validate all required settings
-- [ ] should be able to validate valid settings
-- [ ] should be able to parse `id_string` and `public_key`
-- [ ] should ensure form version using sermver
-- [ ] should be able to parse question number
-    - [ ] remove question number from a label
-    - [ ] use row or number on a label to denote question number 
-- [ ] should be able to parse questions
+    - [ ] should be able to throw error in case of invalid meta
+- [x] should be able to parse questionnaire settings
+    - [ ] should be able to validate all required settings
+    - [ ] should be able to validate valid settings
+    - [ ] should be able to parse `id_string` and `public_key`
+    - [ ] should ensure form version using sermver 
+- [x] should be able to parse questions
     - [ ] Normalize question types to standard ones
     - [ ] Ensure question variable name is in snake case otherwise raise error
-    - [ ] Parse question appearance 
-- [ ] should be able to parse question option list
-    - [ ] parse choices
+    - [ ] Parse question appearance
+    - [ ] should be able to parse question number
+        - [ ] remove question number from a label
+        - [ ] use row or number on a label to denote question number 
+- [x] should be able to parse question option list
+    - [x] parse choices
     - [ ] parse choice media if available
     - [ ] group by list_name(label for list name must be underscored)
     - [ ] detect and remove(or throw error) duplicates on options
-    - [ ] merge options list on the question(list_name must be equal to question variable name)
+    - [x] merge options list on the question(list_name must be equal to question variable name)
     - [ ] detect or_other options
     - [ ] try pre coding answers
         - [ ] yes and no
@@ -55,12 +55,14 @@ error:{
         - [ ] numbered
         - [ ] rank nominal or categorial 
 - [ ] should be able to validate xlsform(columns, datatypes, sheets etc)
-- [ ] should not allow two variable to have same name
-- [ ] should not allow variable to have spaces
-- [ ] should ensure a question has a label
+- [ ] should be able to validate question(s)
+    - [ ] should not allow two variable to have same name
+    - [ ] should not allow variable to have spaces(ensure use of snake case)
+    - [x] should ensure question has a label
+    - [x] should ensure question has a type
+    - [x] should ensure question has a name(variable name)
+    - [x] valid xlsform question/input type 
 - [ ] should support parsing multi language labels
-- [ ] should validate question type
-    - [ ] valid xlsform question type 
 - [x] should filter out meta questions from questions
 - [ ] should pick only allowed excel headers as question fields
 - [ ] should parse repeat questions and build logics around them
@@ -73,7 +75,7 @@ error:{
 - [ ] cleanup user submission_url(from uploaded xlsform) to avoid data loss
 - [ ] how do we add form description on XLSForm
 - [ ] add support for encypted forms
-- [ ] parse questionnaire instance from XForm
+- [ ] parse/prepare questionnaire instance from XForm
 - [ ] Convert xpath expressions to JS express or add xpath expression evaluator
 - [ ] Detect statistical measure of the question(s)
 - [ ] Set valid mongoose/js schema type

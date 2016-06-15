@@ -7,6 +7,9 @@ var _ = require('lodash');
 var expect = require('chai').expect;
 var invalidMeta = path.join(__dirname, 'fixture', 'invalid_meta.xlsx');
 var invalidInput = path.join(__dirname, 'fixture', 'invalid_input.xlsx');
+var noType = path.join(__dirname, 'fixture', 'no_type.xlsx');
+var noName = path.join(__dirname, 'fixture', 'no_name.xlsx');
+var noLabel = path.join(__dirname, 'fixture', 'no_label.xlsx');
 var encrypted = path.join(__dirname, 'fixture', 'encrypted.xlsx');
 var noSettings = path.join(__dirname, 'fixture', 'no_settings.xlsx');
 
@@ -111,6 +114,48 @@ describe('xlsform2json', function() {
 
                 expect(error).to.exist;
                 expect(error.message).to.contain('Invalid question type');
+
+                done();
+
+            });
+
+        });
+
+
+        it('should throw error when question has no type', function(done) {
+
+            xlsform2json(noType, function(error) {
+
+                expect(error).to.exist;
+                expect(error.message).to.contain('Missing question type');
+
+                done();
+
+            });
+
+        });
+
+
+        it('should throw error when question has no variable name', function(done) {
+
+            xlsform2json(noName, function(error) {
+
+                expect(error).to.exist;
+                expect(error.message).to.contain('Missing question name');
+
+                done();
+
+            });
+
+        });
+
+
+        it('should throw error when non-meta question has no associated label', function(done) {
+
+            xlsform2json(noLabel, function(error) {
+
+                expect(error).to.exist;
+                expect(error.message).to.contain('Missing question label');
 
                 done();
 
