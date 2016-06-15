@@ -57,6 +57,8 @@ error:{
 - [ ] should be able to validate xlsform(columns, datatypes, sheets etc)
 - [ ] should not allow two variable to have same name
 - [ ] should not allow variable to have spaces
+- [ ] should ensure a question has a label
+- [ ] should support parsing multi language labels
 - [ ] should validate question type
     - [ ] valid xlsform question type 
 - [x] should filter out meta questions from questions

@@ -5,11 +5,10 @@ var fs = require('fs');
 var path = require('path');
 var _ = require('lodash');
 var expect = require('chai').expect;
-// var sample = path.join(__dirname, 'fixture', 'sample.xls');
-var simple = path.join(__dirname, 'fixture', 'simple_questionnaire.xls');
+var invalidMeta = path.join(__dirname, 'fixture', 'invalid_meta.xlsx');
+var invalidInput = path.join(__dirname, 'fixture', 'invalid_input.xlsx');
 var encrypted = path.join(__dirname, 'fixture', 'encrypted.xlsx');
 var noSettings = path.join(__dirname, 'fixture', 'no_settings.xlsx');
-// var questionTypes = path.join(__dirname, 'fixture', 'question_types.xlsx');
 
 var xlsform2json = require(path.join(__dirname, '..'));
 
@@ -45,7 +44,7 @@ describe('xlsform2json', function() {
         });
 
         it('should be able to read a workbook from binary string', function(done) {
-            xlsform2json(fs.readFileSync(simple, 'binary'), function(error, result) {
+            xlsform2json(fs.readFileSync(encrypted, 'binary'), function(error, result) {
                 expect(error).to.not.exist;
                 expect(result).to.exist;
                 done();
@@ -53,7 +52,7 @@ describe('xlsform2json', function() {
         });
 
         it('should be able to read a workbook from base64 string', function(done) {
-            xlsform2json(fs.readFileSync(simple, 'base64'), function(error, result) {
+            xlsform2json(fs.readFileSync(encrypted, 'base64'), function(error, result) {
                 expect(error).to.not.exist;
                 expect(result).to.exist;
                 done();
@@ -61,7 +60,7 @@ describe('xlsform2json', function() {
         });
 
         it('should be able to read a workbook from buffer', function(done) {
-            xlsform2json(fs.readFileSync(simple), function(error, result) {
+            xlsform2json(fs.readFileSync(encrypted), function(error, result) {
                 expect(error).to.not.exist;
                 expect(result).to.exist;
                 done();
@@ -70,7 +69,7 @@ describe('xlsform2json', function() {
 
         it('should be able to read a workbook from array', function(done) {
             xlsform2json(
-                fs.readFileSync(simple, 'binary').split('').map(function(x) {
+                fs.readFileSync(encrypted, 'binary').split('').map(function(x) {
                     return x.charCodeAt(0);
                 }),
                 function(error, result) {
@@ -81,7 +80,7 @@ describe('xlsform2json', function() {
         });
 
         it('should be able to read a workbook from a file', function(done) {
-            xlsform2json(simple, function(error, result) {
+            xlsform2json(encrypted, function(error, result) {
                 expect(error).to.not.exist;
                 expect(result).to.exist;
                 done();
@@ -91,7 +90,35 @@ describe('xlsform2json', function() {
     });
 
     describe('survey', function() {
-        it('should throw error when invalid question type used');
+
+        it('should throw error when invalid meta question type used', function(done) {
+
+            xlsform2json(invalidMeta, function(error) {
+
+                expect(error).to.exist;
+                expect(error.message).to.contain('Invalid question type');
+
+                done();
+
+            });
+
+        });
+
+
+        it('should throw error when invalid question type used', function(done) {
+
+            xlsform2json(invalidInput, function(error) {
+
+                expect(error).to.exist;
+                expect(error.message).to.contain('Invalid question type');
+
+                done();
+
+            });
+
+        });
+
+
         it('should be able to parse and present questionnaire structure');
 
     });
@@ -128,7 +155,7 @@ describe('xlsform2json', function() {
         it('should be able to obtain choices details', function(done) {
             xlsform2json(encrypted, function(error, result) {
 
-                console.log(result);
+                // console.log(result);
 
                 expect(error).to.not.exist;
                 expect(result).to.exist;
